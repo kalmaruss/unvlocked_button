@@ -57,7 +57,31 @@
     
     <script>
         function openUnvlocked() {
-            window.open('https://sites.google.com/view/unvlocked', '_blank');
+            // The URL you want to open
+            const url = 'https://sites.google.com/view/unvlocked';
+            
+            // Open a new blank window
+            const win = window.open('about:blank', '_blank');
+            
+            if (win) {
+                // Style the new window to be edge-to-edge
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                
+                // Create the iframe
+                const iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.referrerPolicy = 'no-referrer';
+                iframe.src = url;
+                
+                // Add the iframe to the about:blank page
+                win.document.body.appendChild(iframe);
+            } else {
+                alert('Pop-up blocked! Please allow pop-ups for this site.');
+            }
         }
     </script>
 </body>
