@@ -1,88 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unvlocked Button</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: Arial, sans-serif;
-        }
-        
-        .button-container {
-            text-align: center;
-        }
-        
-        h1 {
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        button {
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background-color: #ff6b6b;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        button:hover {
-            background-color: #ee5a52;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-<body>
-    <div class="button-container">
-        <h1>Welcome to Unvlocked</h1>
-        <button onclick="openUnvlocked()">Click Here</button>
-    </div>
+<center>
+    <button onclick="openGame()" style="padding: 8px 18px; font-size: 14px; border-radius: 6px; cursor: pointer; background-color: #ffffff; color: #000000; border: 1px solid #ccc; font-weight: bold;"> 
+        Launch
+    </button>
+</center>
+
+<script>
+function openGame() {
+    var win = window.open('about:blank', '_blank');
     
-    <script>
-        function openUnvlocked() {
-            // The URL you want to open
-            const url = 'https://sites.google.com/view/unvlocked';
-            
-            // Open a new blank window
-            const win = window.open('about:blank', '_blank');
-            
-            if (win) {
-                // Style the new window to be edge-to-edge
-                win.document.body.style.margin = '0';
-                win.document.body.style.height = '100vh';
-                
-                // Create the iframe
-                const iframe = win.document.createElement('iframe');
-                iframe.style.border = 'none';
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.margin = '0';
-                iframe.referrerPolicy = 'no-referrer';
-                iframe.src = url;
-                
-                // Add the iframe to the about:blank page
-                win.document.body.appendChild(iframe);
-            } else {
-                alert('Pop-up blocked! Please allow pop-ups for this site.');
-            }
-        }
-    </script>
-</body>
-</html>
+    // Using the "Run" URL for a clean, fullscreen result
+    var url = "https://sites.google.com/view/unvlocked/";
+    
+    if (win) {
+        win.document.write(`
+            <!DOCTYPE html>
+            <html style="margin: 0; padding: 0; height: 100%; overflow: hidden;">
+            <head>
+                <title> </title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        height: 100vh;
+                        width: 100vw;
+                        overflow: hidden;
+                        background-color: #000;
+                    }
+                    iframe {
+                        border: none;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                    }
+                </style>
+            </head>
+            <body>
+                <iframe src="${url}"></iframe>
+            </body>
+            </html>
+        `);
+        win.document.close();
+    } else {
+        alert("Pop-up blocked! Please allow pop-ups to use this tool.");
+    }
+}
+</script>
